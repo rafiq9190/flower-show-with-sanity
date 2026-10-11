@@ -6,3 +6,8 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  # These two are NEXT_PUBLIC_* by design — Next.js inlines them into the client
+  # bundle and they are safe to expose. Netlify's secrets scanner flags them
+  # anyway (the dataset value is literally "production"), so exempt them by name.
+  # Never add SANITY_API_READ_TOKEN, SANITY_API_WRITE_TOKEN or STRIPE_SECRET_KEY here.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET"
