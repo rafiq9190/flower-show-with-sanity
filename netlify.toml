@@ -1,0 +1,8 @@
+# Netlify build config for the Petal & Verse monorepo.
+# Only the `frontend` workspace is deployed here; the Studio ships via `sanity deploy`.
+[build]
+  command = "npm run build --workspace=frontend"
+  publish = "frontend/.next"
+
+[build.environment]
+  NODE_VERSION = "22"
